@@ -1,26 +1,55 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+	--background: #f8fafc; /* slate-50 */
+	--foreground: #0f172a; /* slate-900 */
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+	:root {
+		--background: #020617; /* slate-950 */
+		--foreground: #f8fafc; /* slate-50 */
+	}
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+	background-color: var(--background);
+	color: var(--foreground);
+	font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+	background: #cbd5e1; /* slate-300 */
+	border-radius: 9999px;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb,
+[data-theme="dark"] .custom-scrollbar::-webkit-scrollbar-thumb {
+	background: #334155; /* slate-700 */
+}
+
+@media (prefers-color-scheme: dark) {
+	.custom-scrollbar::-webkit-scrollbar-thumb {
+		background: #334155; /* slate-700 */
+	}
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+	background: #94a3b8; /* slate-400 */
+}
+
+/* Remove default blue outline focus behaviors and customize input styles */
+textarea:focus,
+input:focus {
+	outline: none;
 }
