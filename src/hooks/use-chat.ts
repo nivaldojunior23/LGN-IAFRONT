@@ -14,7 +14,7 @@ import type {
 	TaskType,
 } from "@/types/chat";
 
-const BACKEND_URL = "http://localhost:5195/api/chat";
+const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5195/api/chat";
 
 export function useChat() {
 	const [companies] = useState<Company[]>(INITIAL_COMPANIES);
@@ -378,7 +378,7 @@ export function useChat() {
 
 		if (lower.includes("cep") || lower.includes("endereço")) {
 			reply =
-				"Olá! Identifiquei que você está solicitando uma consulta de CEP. Para realizar essa consulta com o plugin oficial do ViaCEP, por favor inicie o backend C# localizado no diretório C:\\Users\\nival\\Desktop\\projetos\\LGN-IA. O agente local de Semantic Kernel poderá responder automaticamente!";
+				"Olá! Identifiquei que você está solicitando uma consulta de CEP. Para realizar essa consulta com o plugin oficial do ViaCEP, por favor inicie o backend C# (LGN-IA). O agente local de Semantic Kernel poderá responder automaticamente!";
 		} else if (
 			lower.includes("olá") ||
 			lower.includes("oi") ||
@@ -387,7 +387,7 @@ export function useChat() {
 		) {
 			reply = `Olá! Sou a LGN Inteligência Artificial, focada em automações contábeis para ${activeCompany?.name || "sua empresa"}. \n\nPosso te ajudar a automatizar tarefas repetitivas. Experimente atalhos rápidos acima como "Emitir Nota" ou "Gerar Guia DAS"!`;
 		} else {
-			reply = `Recebi sua mensagem: "${content}". Para processar essa solicitação utilizando inteligência artificial generativa real (Ollama local), ative o servidor C# localizado na pasta C:\\Users\\nival\\Desktop\\projetos\\LGN-IA. \n\nPor enquanto, você pode testar as simulações de cliques de automação contábil usando os botões acima da caixa de digitação.`;
+			reply = `Recebi sua mensagem: "${content}". Para processar essa solicitação utilizando inteligência artificial generativa real (Ollama local), ative o servidor C# (LGN-IA). \n\nPor enquanto, você pode testar as simulações de cliques de automação contábil usando os botões acima da caixa de digitação.`;
 		}
 
 		const assistantMessage: Message = {
